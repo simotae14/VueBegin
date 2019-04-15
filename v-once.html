@@ -40,6 +40,7 @@
 <body>
     <div id="app">
         <h2>Todos:</h2>
+        <img v-once :src="imgLink" width="100" />
         <ol>
             <li v-for="todo in todos">
                 <label>
@@ -62,6 +63,7 @@
             el: "#app",
             data: {
                 title: 'Note: ',
+                imgLink: 'https://vuejs.org/images/logo.png',
                 todos: [{
                         text: "Learn JavaScript",
                         done: false
@@ -85,6 +87,7 @@
                     todo.done = !todo.done
                 },
                 methodTitle: function () {
+                    this.imgLink = 'https://facebook.github.io/create-react-app/img/logo-og.png';
                     return this.title;
                 }
             }
