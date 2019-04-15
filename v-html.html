@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262E;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>Todos:</h2>
+        <div v-html="imgLinkHtml"></div>
+        <ol>
+            <li v-for="todo in todos">
+                <label>
+                    {{ methodTitle() }}
+                    {{ title }}
+                    <input type="checkbox" v-on:change="toggle(todo)" v-bind:checked="todo.done">
+
+                    <del v-if="todo.done">
+                        {{ todo.text }}
+                    </del>
+                    <span v-else>
+                        {{ todo.text }}
+                    </span>
+                </label>
+            </li>
+        </ol>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: 'Note: ',
+                imgLinkHtml: '<img src="https://vuejs.org/images/logo.png" width="100" />',
+                todos: [{
+                        text: "Learn JavaScript",
+                        done: false
+                    },
+                    {
+                        text: "Learn Vue",
+                        done: false
+                    },
+                    {
+                        text: "Play around in JSFiddle",
+                        done: true
+                    },
+                    {
+                        text: "Build something awesome",
+                        done: true
+                    }
+                ]
+            },
+            methods: {
+                toggle: function (todo) {
+                    todo.done = !todo.done
+                },
+                methodTitle: function () {
+                    this.imgLink = 'https://facebook.github.io/create-react-app/img/logo-og.png';
+                    return this.title;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
