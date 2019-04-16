@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262E;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="min != max">
+            <h2>
+                Counter:
+            </h2>
+            <button v-bind:disabled="maxDisabled" v-on:click="editCounter($event, '+')">
+                Increment ++
+            </button>
+            <button v-bind:disabled="minDisabled" v-on:click="editCounter($event, '-')">
+                Decrement --
+            </button>
+            <br>
+            <h1>
+                {{ counter }}
+            </h1>
+        </template>
+        <template v-else>
+            Error Min = Max!!!
+        </template>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0,
+                max: 13,
+                min: 10,
+                maxDisabled: false,
+                minDisabled: true
+            },
+            mounted: function () {
+                this.counter = this.min;
+            },
+            methods: {
+                editCounter: function (event, versus) {
+                    console.log(event);
+                    if (versus === '+') {
+                        if (this.counter < this.max) {
+                            this.counter++;
+                        }
+                    } else if (versus === '-') {
+                        if (this.counter > this.min) {
+                            this.counter--;
+                        }
+                    }
+                    if (this.counter >= this.max) {
+                        this.maxDisabled = true;
+                        this.minDisabled = false;
+                    } else if (this.counter <= this.min) {
+                        this.minDisabled = true;
+                        this.maxDisabled = false;
+                    } else {
+                        this.maxDisabled = false;
+                        this.minDisabled = false;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
