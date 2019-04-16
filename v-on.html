@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262E;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>
+            Counter:
+        </h2>
+        <button v-on:click="incrementCounter">
+            Increment ++
+        </button>
+        <button v-on:click="decrementCounter">
+            Decrement --
+        </button>
+        <br>
+        <h1>
+            {{ counter }}
+        </h1>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                counter: 0
+            },
+            methods: {
+                incrementCounter: function () {
+                    console.log('increment counter');
+                    this.counter++;
+                },
+                decrementCounter: function () {
+                    console.log('decrement counter');
+                    this.counter--;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
