@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>Contatore:</h2>
+        <h1>
+            {{ contatore }}
+        </h1>
+        <hr>
+        <input v-on:keyup="changeText">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                min: 0,
+                contatore: 0,
+            },
+            methods: {
+                changeText(event) {
+                    console.log(event.code);
+                    if (event.code !== 'Backspace' && event.code !== 'Delete' && event.code !== 'ArrowLeft' &&
+                        event.code !== 'ArrowRight' && event.code !== 'ArrowUp' && event.code !== 'ArrowDown') {
+                        this.contatore++;
+                    } else if ((event.code === 'Backspace' || event.code === 'Delete') && this.contatore > this
+                        .min) {
+                        this.contatore--;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
