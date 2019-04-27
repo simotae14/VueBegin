@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      body {
+        background: #20262e;
+        padding: 20px;
+        font-family: Helvetica;
+      }
+
+      #app {
+        background: #fff;
+        border-radius: 4px;
+        padding: 20px;
+        transition: all 0.2s;
+      }
+
+      li {
+        margin: 8px 0;
+      }
+
+      h2 {
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      del {
+        color: rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <h2>
+        Counter:
+      </h2>
+      <button v-on:click="editCounter('+')">
+        Increment ++
+      </button>
+      <button v-on:click="editCounter('-')">
+        Decrement --
+      </button>
+      <button v-on:click="my">
+        My
+      </button>
+      <br />
+      <h1>
+        {{ counter }}
+      </h1>
+      <h3>
+        {{ limitFunction() }}
+      </h3>
+      <h3>
+        {{ limitFunctionComputed }}
+      </h3>
+      <h3>
+        {{ textMy }}
+      </h3>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          textMy: 0
+        },
+        computed: {
+          limitFunctionComputed: function() {
+            console.log("COMPUTED");
+            if (this.counter <= 0) {
+              return "negative";
+            } else {
+              return "positive";
+            }
+          }
+        },
+        methods: {
+          my: function() {
+            console.log("textMy");
+            // uso il math random perché genera sempre un valore diverso
+            this.textMy = Math.random();
+          },
+          limitFunction: function() {
+            console.log("METHOD");
+            if (this.counter <= 0) {
+              return "negative";
+            } else {
+              return "positive";
+            }
+          },
+          editCounter: function(versus) {
+            if (versus === "+") {
+              this.counter++;
+            } else if (versus === "-") {
+              this.counter--;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
