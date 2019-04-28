@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .one {
+            background: #66ff33;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .two {
+            background: #ff0000;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>
+            IF
+        </h2>
+        <div v-show="show" class="one">
+            ONE
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                show: false
+            },
+            methods: {
+                toggle: function (todo) {
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
