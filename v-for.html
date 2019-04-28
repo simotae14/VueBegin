@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .one {
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            V-FOR:
+        </h1>
+        <div class="one" v-show="false">
+            <ul>
+                <li v-for="(color, index) in colors">{{index}}: {{ color }}</li>
+            </ul>
+        </div>
+        <hr>
+        <div class="one">
+            <ul>
+                <li v-for="(article, index) in articles">
+                    Article Number: {{index}}
+                    <div v-for="(art, key, index) in article">
+                        {{ index }} - {{ key }}:{{ art }}
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                colors: ['red', 'green', 'yellow', 'black', 'blue'],
+                articles: [{
+                        name: 'mouse',
+                        price: '25',
+                        category: 'IT'
+                    },
+                    {
+                        name: 'videocamera',
+                        price: '250',
+                        category: 'video'
+                    },
+                    {
+                        name: 'tv',
+                        price: '500',
+                        category: 'televisions'
+                    }
+                ]
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>
