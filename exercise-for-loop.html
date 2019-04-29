@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .square {
+            border: 5px solid #000;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="num in 25" @click="selected = num" class="square" :style="stylesCss(num)">
+            {{num}}
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                selected: 0
+            },
+            methods: {
+                stylesCss: function (sel) {
+                    if (sel === this.selected) {
+                        return {
+                            'border': '5px solid #000FFF',
+                            'color': '#000FFF',
+                            'font-size': '50px'
+                        };
+                    }
+                    return '';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
