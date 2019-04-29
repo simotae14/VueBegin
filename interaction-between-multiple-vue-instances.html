@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+            color: #fff;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app1">
+        <h2>
+            Application 1
+        </h2>
+        <h3>
+            {{ title }}
+        </h3>
+        <img v-once :src="imgLink" alt="image" width="100" />
+    </div>
+    <hr>
+    <div id="app2">
+        <h2>
+            Application 2
+        </h2>
+        <h3>
+            {{ title }}
+        </h3>
+        <img v-once :src="imgLink" alt="image" width="100" />
+        <button @click="methodChange">
+            change
+        </button>
+    </div>
+    <script>
+        var v1 = new Vue({
+            el: "#app1",
+            data: {
+                title: 'Title App 1',
+                imgLink: 'https://vuejs.org/images/logo.png'
+            },
+            methods: {
+                methodTitle: function () {
+                    this.title = 'title changed';
+                }
+            }
+        });
+        var v2 = new Vue({
+            el: "#app2",
+            data: {
+                title: 'Title App 2',
+                imgLink: 'https://vuejs.org/images/logo.png'
+            },
+            methods: {
+                methodChange: function () {
+                    v1.methodTitle();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
