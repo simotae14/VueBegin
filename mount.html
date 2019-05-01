@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app1,
+        #app2 {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app1">
+        <h2>
+            Application 1
+        </h2>
+        <h3 ref="title">
+            {{ title }}
+        </h3>
+        <img @click="methodTitle" v-once :src="imgLink" alt="image" width="100" />
+    </div>
+    <div id="app2">
+
+    </div>
+    <script>
+        var data = {
+            title: 'Title App 1',
+            imgLink: 'https://vuejs.org/images/logo.png'
+        };
+        var v1 = new Vue({
+            data: data,
+            methods: {
+                methodTitle: function () {
+                    //this.title = 'title changed';
+                    this.$refs.title.innerText = 'title changed';
+                }
+            }
+        });
+
+        v1.$mount('#app1');
+
+        var v2 = new Vue({
+            el: '#app2',
+            template: "<h2>Test</h2>"
+        });
+
+        /* setTimeout(function () {
+        console.log(v1.$refs.title);
+        v1.$refs.title.innerText = 'title changed';
+        }, 2500);*/
+    </script>
+</body>
+
+</html>
