@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test 1</title>
+    <!-- import vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background: #20262e;
+            padding: 20px;
+            font-family: Helvetica;
+        }
+
+        #app {
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            {{ title }}
+        </h1>
+        <hr>
+        <button @click="changeText()">
+            Change
+        </button>
+        <button @click="destroy()">
+            Destroy
+        </button>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Title'
+            },
+            beforeCreate: function () {
+                console.log('before create');
+            },
+            created: function () {
+                console.log('create');
+            },
+            beforeMount: function () {
+                console.log('before mount');
+            },
+            mounted: function () {
+                console.log('mounted');
+            },
+            beforeUpdate: function () {
+                console.log('before update');
+            },
+            updated: function () {
+                console.log('updated');
+            },
+            beforeDestroy: function () {
+                console.log('before destroy');
+            },
+            destroyed: function () {
+                console.log('destroyed');
+            },
+            methods: {
+                changeText: function () {
+                    this.title = 'title changed';
+                },
+                destroy: function () {
+                    this.$destroy();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
