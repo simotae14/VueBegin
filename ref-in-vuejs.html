@@ -13,7 +13,6 @@
             background: #20262e;
             padding: 20px;
             font-family: Helvetica;
-            color: #fff;
         }
 
         #app {
@@ -39,56 +38,35 @@
 </head>
 
 <body>
-    <div id="app1">
+    <div id="app">
         <h2>
             Application 1
         </h2>
-        <h3>
+        <h3 ref="title">
             {{ title }}
         </h3>
-        <img v-once :src="imgLink" alt="image" width="100" />
-    </div>
-    <hr>
-    <div id="app2">
-        <h2>
-            Application 2
-        </h2>
-        <h3>
-            {{ title }}
-        </h3>
-        <img v-once :src="imgLink" alt="image" width="100" />
-        <button @click="methodChange">
-            change
-        </button>
+        <img @click="methodTitle" v-once :src="imgLink" alt="image" width="100" />
     </div>
     <script>
+        var data = {
+            title: 'Title App 1',
+            imgLink: 'https://vuejs.org/images/logo.png'
+        };
         var v1 = new Vue({
-            el: "#app1",
-            data: {
-                title: 'Title App 1',
-                imgLink: 'https://vuejs.org/images/logo.png'
-            },
+            el: "#app",
+            data: data,
             methods: {
                 methodTitle: function () {
-                    this.title = 'title changed';
+                    //this.title = 'title changed';
+                    this.$refs.title.innerText = 'title changed';
                 }
             }
         });
 
-        v1.$data.title = 'New Prop';
-
-        var v2 = new Vue({
-            el: "#app2",
-            data: {
-                title: 'Title App 2',
-                imgLink: 'https://vuejs.org/images/logo.png'
-            },
-            methods: {
-                methodChange: function () {
-                    v1.methodTitle();
-                }
-            }
-        });
+        /* setTimeout(function () {
+        console.log(v1.$refs.title);
+        v1.$refs.title.innerText = 'title changed';
+        }, 2500);*/
     </script>
 </body>
 
